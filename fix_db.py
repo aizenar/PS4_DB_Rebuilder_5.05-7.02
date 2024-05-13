@@ -13,7 +13,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("PS4_IP", help="PS4 ftp ip address")
-parser.add_argument('--fw', default="6.72", help='currently support 5.05, 6.72')
+parser.add_argument('--fw', default="11.00", help='currently supports 5.05, 6.72, and 11.00 (default is 11.00)')
 parser.add_argument('--port', default="2121", help='PS4 FTP Port Number')
 args = parser.parse_args()
 app_db = "tmp/app.db"
@@ -26,9 +26,11 @@ value_format = ""
 if(args.fw == "5.05"):
         value_format = """("%s", "%s", "%s", "/user/appmeta/%s", "2018-07-27 15:06:46.822", "0", "0", "5", "1", "100", "0", "151", "5", "1", "gd", "0", "0", "0", "0", NULL, NULL, NULL, "%d", "2018-07-27 15:06:46.802", "0", "game", NULL, "0", "0", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, NULL, "0", "0", NULL, "2018-07-27 15:06:46.757")"""
 elif(args.fw == "6.72"):
-        value_format = """("%s", "%s", "%s", "/user/appmeta/%s", "2018-07-27 15:06:46.822", "0", "0", "5", "1", "100", "0", "151","5", "1", "gd", "0", "0", "0", "0",NULL, NULL, NULL, "%d", "2018-07-27 15:06:46.802", "0", "game", NULL, "0", "0", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "0", NULL,NULL, NULL, NULL, NULL, "0", "0", NULL, "2018-07-27 15:06:46.757","0","0","0","0","0",NULL)"""
+        value_format = """("%s", "%s", "%s", "/user/appmeta/%s", "2018-07-27 15:06:46.822", "0", "0", "5", "1", "100", "0", "151", "5", "1", "gd", "0", "0", "0", "0", NULL, NULL, NULL, "%d", "2018-07-27 15:06:46.802", "0", "game", NULL, "0", "0", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, NULL, "0", "0", NULL, "2018-07-27 15:06:46.757", "0", "0", "0", "0", "0",NULL)"""
+elif(args.fw == "11.00"):
+        value_format = """("%s", "%s", "%s", "/user/appmeta/%s", "2024-05-13 10:09:00.849", "0", "0", "1", "1", "100", "0", "1", "5", "1", "gd", "0", "0", "0", "0", NULL, NULL, NULL, "%d", "2024-05-13 10:09:00.849", "0", "game", NULL, "0", "0", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, NULL, "0", "0", NULL, "2024-05-13 10:09:00.848", "0", "0", "0", "0", "0", NULL, "0", NULL, NULL, NULL)"""
 else:
-        value_format = """("%s", "%s", "%s", "/user/appmeta/%s", "2018-07-27 15:06:46.822", "0", "0", "5", "1", "100", "0", "151","5", "1", "gd", "0", "0", "0", "0",NULL, NULL, NULL, "%d", "2018-07-27 15:06:46.802", "0", "game", NULL, "0", "0", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "0", NULL,NULL, NULL, NULL, NULL, "0", "0", NULL, "2018-07-27 15:06:46.757","0","0","0","0","0",NULL)"""
+        value_format = """("%s", "%s", "%s", "/user/appmeta/%s", "2024-05-13 10:09:00.849", "0", "0", "1", "1", "100", "0", "1", "5", "1", "gd", "0", "0", "0", "0", NULL, NULL, NULL, "%d", "2024-05-13 10:09:00.849", "0", "game", NULL, "0", "0", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, NULL, "0", "0", NULL, "2024-05-13 10:09:00.848", "0", "0", "0", "0", "0", NULL, "0", NULL, NULL, NULL)"""
 
 if not os.path.exists('tmp'):
         os.makedirs('tmp')
